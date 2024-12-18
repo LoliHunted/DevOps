@@ -1,0 +1,32 @@
+version: "3.8"
+services:
+  db:
+    build:
+        context: ./db
+        dockerfile: DockerFile
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydb
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build:
+      context: ./app
+      dockerfile: DockerFile
+    ports:
+      - "80:80"
+    depends_on:
+      - db
+    environment:
+      DB_USER: user
+      DB_PASSWORD: password
+      DB_NAME: mydb
+      DB_HOST: db
+
+volumes:
+  pgdata:
