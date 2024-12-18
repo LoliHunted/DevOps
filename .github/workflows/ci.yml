@@ -10,7 +10,7 @@ on:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-16.04
     services:
       db:
         image: postgres:latest
@@ -27,11 +27,12 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: 3.5.4
+          python-version: 3.5.3
 
       - name: Install dependencies
-        run: |
-          python -m venv venv
+        run:
+          sudo apt-get install python3-venv
+          python3 -m venv venv
           source venv/bin/activate
           pip install -r requirements.txt
 
