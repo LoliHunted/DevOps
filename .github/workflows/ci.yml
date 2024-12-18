@@ -39,7 +39,7 @@ jobs:
 
       - name: Run tests
         run: |
-          python app/app.py &
+          python app/main.py &
           sleep 5 &
           curl -X POST http://localhost:5000/items -H "Content-Type: application/json" -d '{"name": "Test Item"}'
           curl http://localhost:5000/items
