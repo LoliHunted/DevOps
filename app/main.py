@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-
+app = Flask(__name__)
 app.config['DB_USER'] = os.getenv('DB_USER', 'default_user')
 app.config['DB_PASSWORD'] = os.getenv('DB_PASSWORD', 'default_password')
 app.config['DB_NAME'] = os.getenv('DB_NAME', 'default_db')
