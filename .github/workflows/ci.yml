@@ -35,7 +35,7 @@ jobs:
           python3 -m venv venv
           source venv/bin/activate
           pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install flask flask-sqlalchemy psycopg2-binary
 
       - name: Run tests
         run: |
