@@ -2,6 +2,6 @@ FROM postgres:latest
 
 ENV POSTGRES_USER=user
 ENV POSTGRES_PASSWORD=password
-ENV POSTGRES_DB=mydatabase
+ENV POSTGRES_DB=db
 
 COPY db.sql /docker-entrypoint-idb.d/
