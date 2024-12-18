@@ -31,15 +31,15 @@ jobs:
 
       - name: Install dependencies
         run:
-          sudo apt-get install python3-venv
-          python3 -m venv venv
-          source venv/bin/activate
-          pip install --upgrade pip
-          pip install flask flask-sqlalchemy psycopg2-binary
+          sudo apt-get install python3-venv &
+          python3 -m venv venv &
+          source venv/bin/activate &
+          pip install --upgrade pip &
+          pip install -r requirements.txt
 
       - name: Run tests
         run: |
           python app.py &
-          sleep 5
+          sleep 5 &
           curl -X POST http://localhost:5000/items -H "Content-Type: application/json" -d '{"name": "Test Item"}'
           curl http://localhost:5000/items
