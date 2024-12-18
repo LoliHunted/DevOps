@@ -17,7 +17,7 @@ jobs:
         env:
           POSTGRES_USER: user
           POSTGRES_PASSWORD: password
-          POSTGRES_DB: mydatabase
+          POSTGRES_DB: db
         ports:
           - 5432:5432
     steps:
@@ -40,6 +40,6 @@ jobs:
       - name: Run tests
         run: |
           python app/main.py &
-          sleep 5 &
-          curl -X POST http://localhost:5000/items -H "Content-Type: application/json" -d '{"name": "Test Item"}'
-          curl http://localhost:5000/items
+          sleep 6
+          curl -X POST http://localhost:80/items -H "Content-Type: application/json" -d '{"name": "Test Item"}'
+          curl http://localhost:80/items
