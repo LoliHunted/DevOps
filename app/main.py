@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 import os
+import logging
 
 app = Flask(__name__)
 app.config['DB_USER'] = os.getenv('DB_USER', 'default_user')
@@ -9,7 +10,6 @@ app.config['DB_NAME'] = os.getenv('DB_NAME', 'default_db')
 app.config['DB_HOST'] = os.getenv('DB_HOST', 'localhost')
 app.config['DB_PORT'] = os.getenv('DB_PORT', '5432')
 
-# Настройка логирования
 app.logger.setLevel(logging.INFO)
 
 app.logger.info(f"DB_HOST: {app.config['DB_HOST']}")
