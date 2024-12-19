@@ -5,8 +5,4 @@ COPY requirements.txt .
 RUN pip install -r requirements.txt
 COPY . .
 
-# Добавляем wait-for-it.sh
-COPY wait-for-it.sh /wait-for-it.sh
-RUN chmod +x /wait-for-it.sh
-
-CMD ["sh", "-c", "/wait-for-it.sh db:5432 -- python main.py"]
+CMD ["python", "main.py"]
