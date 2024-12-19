@@ -1,9 +1,7 @@
 version: "3.8"
 services:
   db:
-    build:
-        context: ./db
-        dockerfile: DockerFile
+    build: ./db
     image: postgres:latest
     environment:
       POSTGRES_USER: user
