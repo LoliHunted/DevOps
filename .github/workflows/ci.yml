@@ -40,6 +40,5 @@ jobs:
       - name: Run tests
         run:
           sudo apt-get install docker-compose &&
-          #sudo systemctl unmask docker &&
           sudo systemctl start docker &&
           sudo docker-compose up --build
