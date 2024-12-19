@@ -39,4 +39,5 @@ jobs:
 
       - name: Run tests
         run:
+          sudo apt-get install docker-compose &&
           sudo docker-compose up
