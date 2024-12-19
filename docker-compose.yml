@@ -13,6 +13,8 @@ services:
       - "5432:5432"
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - mynetwork
 
   web:
     build:
@@ -27,6 +29,12 @@ services:
       DB_PASSWORD: password
       DB_NAME: db
       DB_HOST: db
+    networks:
+      - mynetwork
 
 volumes:
   pgdata:
+
+networks:
+  mynetwork:
+    driver: bridge
