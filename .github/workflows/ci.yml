@@ -41,6 +41,5 @@ jobs:
         run:
           sudo apt-get install docker-compose &&
           sudo systemctl unmask docker &&
-          sudo dockerd --debug
           sudo systemctl start docker &&
-          sudo docker-compose up
+          sudo docker-compose up --build
