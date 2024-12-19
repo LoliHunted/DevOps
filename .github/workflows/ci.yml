@@ -46,5 +46,5 @@ jobs:
         run: |
           python app/main.py &
           sleep 6
-          curl -X POST http://web:8080/items -H "Content-Type: application/json" -d '{"name": "Test Item"}'
-          curl http://web:8080/items
+          curl -X POST http://localhost:8080/items -H "Content-Type: application/json" -d '{"name": "Test Item"}'
+          curl http://localhost:8080/items
