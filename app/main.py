@@ -30,8 +30,6 @@ if __name__ == '__main__':
         db.create_all()
     app.run(host='0.0.0.0', port=80)
 '''
-
-
 from flask import Flask, request, jsonify
 import psycopg2
 import time
@@ -39,17 +37,14 @@ import logging
 
 app = Flask(__name__)
 
-# Настройки подключения к базе данных
 DB_HOST = 'db'
 DB_NAME = 'db'
 DB_USER = 'user'
 DB_PASSWORD = 'password'
 
-# Настройка логирования
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
-# Функция для подключения к базе данных
 def get_db_connection():
     try:
         conn = psycopg2.connect(
@@ -63,7 +58,6 @@ def get_db_connection():
         logger.error(f"Ошибка подключения к базе данных: {e}")
         raise
 
-# Маршрут для получения всех элементов
 @app.route('/items', methods=['GET'])
 def get_items():
     try:
@@ -78,7 +72,6 @@ def get_items():
         logger.error(f"Ошибка при получении элементов: {e}")
         return jsonify({'error': 'Ошибка при получении элементов'}), 500
 
-# Маршрут для создания нового элемента
 @app.route('/items', methods=['POST'])
 def create_item():
     try:
@@ -99,7 +92,5 @@ def create_item():
         return jsonify({'error': 'Ошибка при создании элемента'}), 500
 
 if __name__ == '__main__':
-    # Добавляем задержку перед подключением к базе данных
     time.sleep(12)
-    # Запускаем приложение
-    app.run(port=80)
+    app.run(port=8080)
